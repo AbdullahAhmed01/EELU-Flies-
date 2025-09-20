@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Gray Code</title>
+  <link rel="stylesheet" href="style.css" />
+  <script defer src="app.js"></script>
+  <style>
+    html, body {
+      min-height: 100vh;
+      box-sizing: border-box;
+      background: var(--bg);
+    }
+  </style>
+</head>
+<body>
+  <div class="taskbar">
+    <span style="font-size:18px;font-weight:500;color:#34a9cd;letter-spacing:1px;margin-left:18px;">وَأَنْ لَيْسَ لِلْإِنسَانِ إِلَّا مَا سَعَى</span>
+    <div style="display:flex;align-items:center;gap:12px;">
+      <div id="theme-toggle" class="theme-switch" tabindex="0" role="button" aria-label="Toggle switch for theme selection with sun icon on the left and moon icon on the right; thumb currently on sun (light mode)">
+        <span class="thumb">
+          <svg class="icon-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="5" fill="#facc15"/><g stroke="#facc15" stroke-width="2"><line x1="12" y1="2" x2="12" y2="5"/><line x1="12" y1="19" x2="12" y2="22"/><line x1="2" y1="12" x2="5" y2="12"/><line x1="19" y1="12" x2="22" y2="12"/><line x1="4.22" y1="4.22" x2="6.34" y2="6.34"/><line x1="17.66" y1="17.66" x2="19.78" y2="19.78"/><line x1="4.22" y1="19.78" x2="6.34" y2="17.66"/><line x1="17.66" y1="6.34" x2="19.78" y2="4.22"/></g></svg>
+        </span>
+        <span class="icon-moon">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12.79A9 9 0 0 1 12.21 3a7 7 0 1 0 8.79 9.79z" fill="#fff"/><circle cx="17.5" cy="7.5" r="1.5" fill="#fff"/></svg>
+        </span>
+      </div>
+      <a href="#" class="chat-btn" style="width:36px;height:36px;display:flex;align-items:center;justify-content:center;border-radius:50%;background:#3770e9;box-shadow:0 2px 8px rgba(55,112,233,0.18);" aria-label="Chat" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none">
+          <circle cx="12" cy="12" r="12" fill="#3770e9"/>
+          <path d="M7 10.5C7 9.11929 8.11929 8 9.5 8H14.5C15.8807 8 17 9.11929 17 10.5V13.5C17 14.8807 15.8807 16 14.5 16H12L9 18V16H9.5C8.11929 16 7 14.8807 7 13.5V10.5Z" fill="#fff"/>
+        </svg>
+      </a>
+    </div>
+  </div>
+  <header class="site-header"></header>
+
+  <main class="hero">
+    <p class="lead">Welcome to EELU Student</p>
+    <nav class="stack">
+      <a class="btn-3d btn-blue" href="level1.html" aria-label="Level 1 IT">Level 1 (IT)</a>
+      <a class="btn-3d btn-green" href="level2.html" aria-label="Level 2 IT">Level 2 (IT)</a>
+      <a href="#" class="level-btn whatsapp-btn" style="width:40%;max-width:180px;display:flex;align-items:center;justify-content:center;gap:12px;background:#25D366;color:#fff;font-weight:600;border:none;box-shadow:0 2px 8px rgba(37,211,102,0.18);text-decoration:none;" aria-label="WhatsApp Groups">
+        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" style="flex-shrink:0;"><circle cx="12" cy="12" r="12" fill="#25D366"/></svg>
+        <span style="flex:1;text-align:center;white-space:nowrap;margin-left:20px;">WhatsApp Groups</span>
+      </a>
+      <a href="https://youtube.com/@eelu-c9f?si=65gYVRugFODVY5ii" class="level-btn youtube-btn" style="width:48px;height:48px;display:flex;align-items:center;justify-content:center;border-radius:50%;background:#ff0000;box-shadow:0 2px 8px rgba(255,0,0,0.18);margin-top:18px;" aria-label="YouTube Channel" target="_blank">
+        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none">
+          <circle cx="12" cy="12" r="12" fill="#ff0000"/>
+          <polygon points="10,8 17,12 10,16" fill="#fff"/>
+        </svg>
+      </a>
+       <div id="whatsapp-modal" class="whatsapp-modal" style="display:none;position:fixed;top:0;left:0;width:100vw;height:100vh;background:rgba(0,0,0,0.5);z-index:1000;align-items:center;justify-content:center;">
+         <div style="background:#fff;border-radius:16px;padding:32px;max-width:400px;width:90vw;box-shadow:0 4px 24px rgba(0,0,0,0.18);display:flex;flex-direction:column;gap:18px;">
+           <h3 style="color:#25D366;text-align:center;margin-bottom:12px;">WhatsApp Groups</h3>
+           <a href="https://chat.whatsapp.com/KioNRGPtmiY51eyIMsVurp" target="_blank" style="color:#25D366;font-weight:500;text-decoration:none;">Material Level 2</a>
+           <a href="https://chat.whatsapp.com/IEBnrS1NcOcIXlDvhhVT8Q?mode=ems_copy_t" target="_blank" style="color:#25D366;font-weight:500;text-decoration:none;">Community Level 2</a>
+           <a href="https://chat.whatsapp.com/DPq24Mf1IKG3716MxxINrI?mode=ems_copy_t" target="_blank" style="color:#25D366;font-weight:500;text-decoration:none;">Programmers Community</a>
+           <a href="https://chat.whatsapp.com/F9QmzJXJuCwD5PRpfJkNnm?mode=ems_copy_t" target="_blank" style="color:#25D366;font-weight:500;text-decoration:none;">Community Level 1</a>
+           <a href="https://chat.whatsapp.com/LaaD2FxJYIW7FANHepImlV?mode=ems_copy_t" target="_blank" style="color:#25D366;font-weight:500;text-decoration:none;">Material Level 1</a>
+           <button id="close-whatsapp-modal" style="margin-top:18px;background:#25D366;color:#fff;border:none;padding:8px 18px;border-radius:8px;font-size:16px;cursor:pointer;">Close</button>
+         </div>
+       </div>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    var whatsappBtn = document.querySelector('.whatsapp-btn');
+    var whatsappModal = document.getElementById('whatsapp-modal');
+    var closeWhatsappModal = document.getElementById('close-whatsapp-modal');
+    if (whatsappBtn && whatsappModal && closeWhatsappModal) {
+      whatsappBtn.addEventListener('click', function(e) {
+        e.preventDefault();
+        whatsappModal.style.display = 'flex';
+      });
+      closeWhatsappModal.addEventListener('click', function() {
+        whatsappModal.style.display = 'none';
+      });
+      whatsappModal.addEventListener('click', function(e) {
+        if (e.target === whatsappModal) {
+          whatsappModal.style.display = 'none';
+        }
+      });
+    }
+  });
+</script>
+    </nav>
+  </main>
+  <footer>
+    &copy; 2025 Gray Code. All rights reserved.
+  </footer>
+</body>
+</html>
